@@ -18,6 +18,7 @@ int main(int argc, char const *argv[])
         std::cout << "Logged in as " << bot.me.username << "!\n";
     });
     bot.on_message_create([&bot](const dpp::message_create_t & event) {
+        std::cout << event.msg->content <<":Message recieved\n";
         if (event.msg->content == "!ping") {
             bot.message_create(dpp::message(event.msg->channel_id, "Pong!"));
         }
