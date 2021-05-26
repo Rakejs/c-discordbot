@@ -18,9 +18,21 @@ int main(int argc, char const *argv[])
         std::cout << "Logged in as " << bot.me.username << "!\n";
     });
     bot.on_message_create([&bot](const dpp::message_create_t & event) {
-        std::cout << event.msg->content <<":Message recieved\n";
-        if (event.msg->content == "!ping") {
-            bot.message_create(dpp::message(event.msg->channel_id, "Pong!"));
+       
+        if (event.msg->content == "!help") {
+            dpp::embed e;
+            e.set_title(" Discord Bot");
+            e.set_color(148225192);
+            e.set_description("-------");
+            e.add_field("Getting Started","use `!!commands` to view all commands");
+            bot.message_create(dpp::message(event.msg->channel_id, e));
+        }
+        if (event.msg->content == "!stats") {
+            dpp::embed e;
+            e.set_title("Server Stats");
+            e.set_color(148225192);
+            e.set_description("The command views general server stats");
+            bot.message_create(dpp::message(event.msg->channel_id, e));
         }
     });
     bot.start(false);
