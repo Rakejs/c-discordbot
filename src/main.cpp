@@ -28,6 +28,13 @@ int main(int argc, char const *argv[])
             e.add_field("Getting Started","use `!!commands` to view all commands");
             bot.message_create(dpp::message(event.msg->channel_id, e));
         }
+        if (event.msg->content == "!ping") {
+            dpp::embed e;
+            e.set_title("Pong");
+            e.set_color(148225192);
+            e.set_description(fmt::format("Pong! {0:.3f}", bot->websocket_ping));
+            bot.message_create(dpp::message(event.msg->channel_id, e));
+        }
         if (event.msg->content == "!stats") {
             dpp::guild* msg_guild = dpp::find_guild(event.msg->guild_id);
             dpp::embed e;
