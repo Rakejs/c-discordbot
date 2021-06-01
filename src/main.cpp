@@ -32,7 +32,8 @@ int main(int argc, char const *argv[])
             dpp::embed e;
             e.set_title("Pong");
             e.set_color(148225192);
-            e.set_description(fmt::format("Pong! {0:.3f}", bot->websocket_ping));
+            int botping = event.from->websocket_ping;
+            e.set_description("Pong! This took: "+to_string(botping*1000)+ "ms");
             bot.message_create(dpp::message(event.msg->channel_id, e));
         }
         if (event.msg->content == "!stats") {

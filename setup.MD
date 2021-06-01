@@ -16,10 +16,11 @@ sudo make install
 cd ../../..
 git clone https://github.com/brainboxdotcc/dpp
 cd dpp
+git checkout dev
 mkdir build
 cd build
 cmake ..
-make -j
+make -j8
 sudo make install
 cd ../../..
 mkdir build
